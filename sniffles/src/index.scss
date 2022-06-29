@@ -42,3 +42,52 @@ header{
     
   }
 }
+
+// main / pollen forecast display section
+main{
+  height: fit-content;
+  min-height: 600px;
+  padding: 1em;
+  border-radius: 25px;
+  background-color: rgba(0,0,0,.6);
+  box-shadow: rgba(0,0,0,.24) 0px 3px 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  // location search section
+  .search-bar{
+    padding: 2em;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 2rem;
+
+    input{
+      margin-bottom: 0;
+      width: 50%;
+      border-radius: 25px;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      background-color: rgba(0,0,0,.6);
+      border: none;
+      outline: none;
+      color: #333;
+      &::placeholder{
+        color: inherit;
+      }
+    }
+
+    .clear-btn{
+      display: none;
+      padding: .6em;
+      font-weight: 200;
+      color: #333;
+    }
+  }
+
+  .location-text{
+    font-size: 2em;
+    color: #333;
+  }
+}
