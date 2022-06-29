@@ -1,0 +1,44 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*{
+  scroll-behavior: smooth;
+}
+
+body{
+  background-color: #e4e4e4;
+}
+
+.page-container{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+a{
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+}
+
+// nav bar section
+header{
+  margin-top: 2rem;
+  align-items: center;
+
+  h1{
+    border-bottom: 1px solid #333;
+    letter-spacing: 2px;
+  }
+
+  nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    
+  }
+}
