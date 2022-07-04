@@ -10,6 +10,12 @@
 
 body {
   background-color: #e4e4e4;
+  background-image: url(../public/img/green_field.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .page-container {
@@ -20,7 +26,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #333;
+  color: #6c98c5;
   font-weight: 600;
 }
 
@@ -29,7 +35,7 @@ header {
   align-items: center;
 }
 header h1 {
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #6c98c5;
   letter-spacing: 2px;
 }
 header nav {
@@ -67,7 +73,7 @@ main .search-bar input {
   background-color: rgba(0, 0, 0, 0.6);
   border: none;
   outline: none;
-  color: #333;
+  color: #6c98c5;
 }
 main .search-bar input::-moz-placeholder {
   color: inherit;
@@ -82,9 +88,177 @@ main .search-bar .clear-btn {
   display: none;
   padding: 0.6em;
   font-weight: 200;
-  color: #333;
+  color: #6c98c5;
 }
 main .location-text {
   font-size: 2em;
-  color: #333;
+  color: #6c98c5;
+}
+
+.display-wrap {
+  display: flex;
+  justify-content: space-evenly;
+}
+.display-wrap .pollen-display {
+  border-radius: 25px;
+  width: 100%;
+  min-height: 450px;
+  margin: 0 1em 1em 1em;
+  padding-top: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 5px 1px #6c98c5;
+  color: #6c98c5;
+}
+.display-wrap .pollen-display h1 {
+  letter-spacing: 2px;
+}
+.display-wrap .tree-box {
+  color: green;
+  text-shadow: 0 0 4px green;
+}
+.display-wrap .weed-box {
+  color: green;
+  text-shadow: 0 0 4px green;
+}
+.display-wrap .grass-box {
+  color: green;
+  text-shadow: 0 0 4px green;
+}
+.display-wrap .mold-box {
+  color: green !important;
+  text-shadow: 0 0 4px green !important;
+}
+.display-wrap .color-box {
+  height: 50px;
+  width: 100%;
+  position: relative;
+}
+.display-wrap .color-box .color {
+  position: absolute;
+  top: 2px;
+  left: 10px;
+  height: 90%;
+  width: 90%;
+  max-width: 250px;
+  background: #00ff00;
+  background: linear-gradient(90deg, #00ff00 0%, #ff0000 90%);
+  background: -moz-linear-gradient(90deg, #00ff00 0%, #ff0000 90%);
+  border-radius: 10px;
+}
+.display-wrap .color-box .indicator {
+  position: absolute;
+  top: 0;
+  left: 2%;
+  height: 100%;
+  width: 2px;
+  background-color: #fff;
+}
+.display-wrap .color-box .tree-indicator {
+  top: 0;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+  -webkit-animation-name: tree-slider;
+          animation-name: tree-slider;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+@-webkit-keyframes tree-slider {
+  0% {
+    left: 2%;
+  }
+  100% {
+    left: 20%;
+  }
+}
+@keyframes tree-slider {
+  0% {
+    left: 2%;
+  }
+  100% {
+    left: 20%;
+  }
+}
+.display-wrap .color-box .weed-indicator {
+  top: 0;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+  -webkit-animation-name: weed-slider;
+          animation-name: weed-slider;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+@-webkit-keyframes weed-slider {
+  0% {
+    left: 2%;
+  }
+  100% {
+    left: 20%;
+  }
+}
+@keyframes weed-slider {
+  0% {
+    left: 2%;
+  }
+  100% {
+    left: 20%;
+  }
+}
+.display-wrap .color-box .grass-indicator {
+  top: 0;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+  -webkit-animation-name: grass-slider;
+          animation-name: grass-slider;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+@-webkit-keyframes grass-slider {
+  0% {
+    left: 2%;
+  }
+  100% {
+    left: 20%;
+  }
+}
+@keyframes grass-slider {
+  0% {
+    left: 2%;
+  }
+  100% {
+    left: 20%;
+  }
+}
+
+footer {
+  margin-top: 2em;
+  height: 100px;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  align-items: flex-end;
+  padding-left: 2em;
+  display: flex;
+  justify-content: space-between;
+}
+footer a {
+  padding-bottom: 3.5rem;
+  color: #6c98c5;
+}
+footer p {
+  color: #6c98c5;
+  padding-bottom: 0;
+  margin-bottom: 3.5rem;
+}
+footer div {
+  display: flex;
+  align-items: center;
+  padding-bottom: 1.5rem;
+  padding-right: 3rem;
+}
+footer div p {
+  padding-right: 0.5rem;
+  margin-bottom: 1rem;
 }/*# sourceMappingURL=index.css.map */

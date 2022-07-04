@@ -1,7 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
+import './index.css'
 import Nav from './Nav';
 import Main from './Main';
+import Footer from './Footer';
+
 
 function App() {
   return (
@@ -10,11 +12,7 @@ function App() {
         <Nav />
         <Main />
       </div>
-
-
-        <img src={logo} className="App-logo" alt="logo" />
-        
-        
+      <Footer />
     </div>
   );
 }

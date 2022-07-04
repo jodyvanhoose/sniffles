@@ -1,3 +1,5 @@
+@import './variables';
+
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -10,6 +12,13 @@
 
 body{
   background-color: #e4e4e4;
+  background-image: url(../public/img/green_field.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .page-container{
@@ -20,7 +29,7 @@ body{
 
 a{
   text-decoration: none;
-  color: #333;
+  color: $primaryColor;
   font-weight: 600;
 }
 
@@ -30,7 +39,7 @@ header{
   align-items: center;
 
   h1{
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid $primaryColor;
     letter-spacing: 2px;
   }
 
@@ -72,7 +81,7 @@ main{
       background-color: rgba(0,0,0,.6);
       border: none;
       outline: none;
-      color: #333;
+      color: $primaryColor;
       &::placeholder{
         color: inherit;
       }
@@ -82,12 +91,180 @@ main{
       display: none;
       padding: .6em;
       font-weight: 200;
-      color: #333;
+      color: $primaryColor;
     }
   }
 
   .location-text{
     font-size: 2em;
-    color: #333;
+    color: $primaryColor;
+  }
+}
+
+// pollen display section
+.display-wrap{
+  display: flex;
+  justify-content: space-evenly;
+
+  .pollen-display{
+    border-radius: 25px;
+    width: 100%;
+    min-height: 450px;
+    margin: 0 1em 1em 1em;
+    padding-top: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba(0,0,0,0.3);
+    box-shadow: 0 0 5px 1px $primaryColor;
+    color: $primaryColor;
+
+    h1{
+      letter-spacing: 2px;
+    }
+
+      
+  }
+  
+
+  
+    .tree-box{
+      color: green;
+      text-shadow: 0 0 4px green;
+    }
+  
+    .weed-box{
+      color: green;
+      text-shadow: 0 0 4px green;
+    }
+  
+    .grass-box{
+      color: green;
+      text-shadow: 0 0 4px green;
+    }
+  
+
+    .mold-box{
+      color: green !important;
+      text-shadow: 0 0 4px green !important;
+    }
+  
+
+  .color-box{
+    height: 50px;
+    width: 100%;
+    position: relative;
+  
+
+    .color{
+      position: absolute;
+      top: 2px;
+      left: 10px;
+      
+      height: 90%;
+      width: 90%;
+      max-width: 250px;
+      background: #00ff00;
+      background: linear-gradient(90deg,#00ff00 0%, #ff0000 90%);
+      background: -webkit-linear-gradient(90deg,#00ff00 0%, #ff0000 90%);
+      background: -moz-linear-gradient(90deg,#00ff00 0%, #ff0000 90%);
+      border-radius: 10px;
+    }
+
+    .indicator{
+      position: absolute;
+      top: 0;
+      left: 2%;
+      height: 100%;
+      width: 2px;
+      background-color: #fff;
+    }
+
+    .tree-indicator{
+      top: 0;
+      animation-duration: 3s;
+      animation-name: tree-slider;  
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes tree-slider{
+      0%{
+        left: 2%;
+      }
+      100%{
+        left: 20%;
+      }
+    }
+
+    .weed-indicator{
+      top: 0;
+      animation-duration: 3s;
+      animation-name: weed-slider;  
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes weed-slider{
+      0%{
+        left: 2%;
+      }
+      100%{
+        left: 20%;
+      }
+    }
+
+    .grass-indicator{
+      top: 0;
+      animation-duration: 3s;
+      animation-name: grass-slider;  
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes grass-slider{
+      0%{
+        left: 2%;
+      }
+      100%{
+        left: 20%;
+      }
+    }
+  }
+
+}
+
+
+footer{
+  margin-top: 2em;
+  height: 100px;
+  background-color: rgba(0, 0, 0, 1);
+  display: flex;
+  align-items: flex-end;
+  padding-left: 2em;
+  display: flex;
+  justify-content: space-between;
+
+  a{
+    padding-bottom: 3.5rem;
+    color: $primaryColor;
+  }
+
+  p{
+    color: $primaryColor;
+    padding-bottom: 0;
+    margin-bottom: 3.5rem;
+  }
+
+  div{
+    display: flex;
+    align-items: center;
+    padding-bottom: 1.5rem;
+    padding-right: 3rem;
+   p{
+    padding-right: .5rem;
+    margin-bottom: 1rem;
+   }
+
+   
+
   }
 }

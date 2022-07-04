@@ -1,4 +1,6 @@
 function Main() {
+
+
   return(
     <main>
       {/* search bar  */}
@@ -15,38 +17,45 @@ function Main() {
       <div className="display-wrap">
         <div className="pollen-display tree">
           <h1>Tree</h1>
-          <h1 id="tree-box" className="box">None</h1>
+
+          <h1 id="tree-box" className="tree-box">Low</h1>
           <div className="color-box">
             <div className="color"></div>
             <div className="indicator tree-indicator"></div>
           </div> 
         </div>
-      </div>
+      
 
       {/* weeds display */}
-      <div className="display-wrap">
         <div className="pollen-display weed">
           <h1>Weeds</h1>
-          <h1 id="tree-box" className="box">None</h1>
+          <h1 id="weed-box" className="weed-box">None</h1>
           <div className="color-box">
             <div className="color"></div>
             <div className="indicator weed-indicator"></div>
           </div> 
         </div>
-      </div>
 
       {/* grass display */}
-      <div className="display-wrap">
         <div className="pollen-display grass">
           <h1>Grass</h1>
-          <h1 id="tree-box" className="box">None</h1>
+          <h1 id="grass-box" className="grass-box">None</h1>
           <div className="color-box">
             <div className="color"></div>
             <div className="indicator grass-indicator"></div>
           </div> 
         </div>
-      </div>
+
+        <div className="pollen-display mold">
+          <h1>Mold</h1>
+          <h1 id="mold-box" className="mold-box">None</h1>
+          <div className="color-box">
+            <div className="color"></div>
+            <div className="indicator grass-indicator"></div>
+          </div> 
+        </div>
       
+    </div>
     </main>
   )
 }
