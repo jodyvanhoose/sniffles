@@ -1,4 +1,16 @@
 function Main() {
+// animiate input and show cancel btn
+const showCancelBtn = () =>{
+  document.getElementById('clear-btn').style.display = 'block'
+}
+
+
+
+// cancels and clears input
+const cancelBtn = () =>{
+  document.querySelector('input').value = ''
+  document.getElementById('clear-btn').style.display = 'none'
+}
 
 
   return(
@@ -6,8 +18,8 @@ function Main() {
       {/* search bar  */}
       <div className="row">
         <form className="search-bar column" action="">
-          <input type="text" name="city" placeholder="Search" />
-          <a id="clear-btn" className="clear-btn" href="#">Cancel</a>
+          <input onMouseDown={showCancelBtn} type="text" name="city" placeholder="Search" />
+          <a onClick={cancelBtn} id="clear-btn" className="clear-btn" href="#">Cancel</a>
         </form>
         <p className="location-text">Check your location's pollen count</p>
       </div>
