@@ -105,6 +105,8 @@ main{
 .display-wrap{
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
+  // flex-direction: column;
 
   .pollen-display{
     border-radius: 25px;
@@ -155,16 +157,16 @@ main{
     height: 50px;
     width: 100%;
     position: relative;
-  
 
     .color{
       position: absolute;
       top: 2px;
       left: 10px;
+    
       
       height: 90%;
-      width: 90%;
-      max-width: 250px;
+      width: 93%;
+      // max-width: 250px;
       background: #00ff00;
       background: linear-gradient(90deg,#00ff00 0%, #ff0000 90%);
       background: -webkit-linear-gradient(90deg,#00ff00 0%, #ff0000 90%);
@@ -265,6 +267,44 @@ footer{
    }
 
    
+
+  }
+}
+
+
+
+@media (max-width: 800px){
+ 
+
+  .search-bar{
+    padding: 0;
+  }
+  
+  .display-wrap{
+    flex-direction: column;
+    margin-left: 2rem;
+    margin-right: 3rem;
+
+    .pollen-display{
+      width: 94% !important;
+    }
+  }
+
+ 
+  
+}
+
+
+  
+
+
+@media (max-width: 500px){
+  nav{
+    flex-direction: column;
+
+    h1{
+      margin: .5em 0 0 0;
+    }
 
   }
 }

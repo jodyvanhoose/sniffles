@@ -98,6 +98,7 @@ main .location-text {
 .display-wrap {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 }
 .display-wrap .pollen-display {
   border-radius: 25px;
@@ -142,8 +143,7 @@ main .location-text {
   top: 2px;
   left: 10px;
   height: 90%;
-  width: 90%;
-  max-width: 250px;
+  width: 93%;
   background: #00ff00;
   background: linear-gradient(90deg, #00ff00 0%, #ff0000 90%);
   background: -moz-linear-gradient(90deg, #00ff00 0%, #ff0000 90%);
@@ -261,4 +261,27 @@ footer div {
 footer div p {
   padding-right: 0.5rem;
   margin-bottom: 1rem;
+}
+
+@media (max-width: 800px) {
+  .search-bar {
+    padding: 0;
+  }
+
+  .display-wrap {
+    flex-direction: column;
+    margin-left: 2rem;
+    margin-right: 3rem;
+  }
+  .display-wrap .pollen-display {
+    width: 94% !important;
+  }
+}
+@media (max-width: 500px) {
+  nav {
+    flex-direction: column;
+  }
+  nav h1 {
+    margin: 0.5em 0 0 0;
+  }
 }/*# sourceMappingURL=index.css.map */

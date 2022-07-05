@@ -12,6 +12,8 @@ const cancelBtn = () =>{
   document.getElementById('clear-btn').style.display = 'none'
 }
 
+const vh = <h1>V. High</h1>
+const mod = 'Mod'
 
   return(
     <main>
@@ -51,7 +53,7 @@ const cancelBtn = () =>{
       {/* grass display */}
         <div className="pollen-display grass">
           <h1>Grass</h1>
-          <h1 id="grass-box" className="grass-box">None</h1>
+          <h1 id="grass-box" className="grass-box">{mod}</h1>
           <div className="color-box">
             <div className="color"></div>
             <div className="indicator grass-indicator"></div>
@@ -60,7 +62,7 @@ const cancelBtn = () =>{
 
         <div className="pollen-display mold">
           <h1>Mold</h1>
-          <h1 id="mold-box" className="mold-box">None</h1>
+          <h1 id="mold-box" className="mold-box">{vh}</h1>
           <div className="color-box">
             <div className="color"></div>
             <div className="indicator grass-indicator"></div>
