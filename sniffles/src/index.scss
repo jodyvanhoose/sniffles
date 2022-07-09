@@ -67,7 +67,7 @@ main{
 
   // location search section
   .search-bar{
-    padding: 2em;
+    padding: 1em 1em 0 1em;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -107,7 +107,7 @@ main{
   justify-content: space-evenly;
   align-items: center;
   // flex-direction: column;
-
+  
   .pollen-display{
     border-radius: 25px;
     width: 100%;
@@ -122,8 +122,25 @@ main{
     box-shadow: 0 0 5px 1px $primaryColor;
     color: $primaryColor;
 
-    h1{
+    .pollen-heading{
       letter-spacing: 2px;
+      margin: 0;
+    }
+
+    .pollen-value{
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      padding: 0;
+
+      .pollen_value_text{
+        margin: 0;
+        font-size: 6rem;
+      }
+
+      p{
+        margin: 0;
+      }
     }
 
       
@@ -134,22 +151,26 @@ main{
     .tree-box{
       color: green;
       text-shadow: 0 0 4px green;
+      margin: 0;
+      
     }
   
     .weed-box{
       color: green;
       text-shadow: 0 0 4px green;
+      margin: 0;
     }
   
     .grass-box{
       color: green;
       text-shadow: 0 0 4px green;
+      margin: 0;
     }
   
-
     .mold-box{
       color: green !important;
       text-shadow: 0 0 4px green !important;
+      margin: 0;
     }
   
 
