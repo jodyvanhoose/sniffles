@@ -15,6 +15,7 @@ const cancelBtn = () =>{
   document.getElementById('clear-btn').style.display = 'none'
 }
 
+// setting use state for pollen level and values
   const [treeCategory, setTreeCategory] = useState('')
   const [grassCategory, setGrassCategory] = useState('')
   const [weedCategory, setWeedCategory] = useState('')
@@ -24,6 +25,32 @@ const cancelBtn = () =>{
   const [weedValue, setWeedValue] = useState(null)
   const [moldValue, setMoldValue] = useState(null)
 
+
+  // setting pollen value color
+  const pollenMap = new Map()
+  pollenMap.set('Good', 'darkgreen')
+  pollenMap.set('Low', 'green')
+  pollenMap.set('Moderate', 'orange')
+  pollenMap.set('High', 'red')
+  pollenMap.set('Unhealthy', 'dark red')
+  pollenMap.set('Hazardous', 'dark red')
+
+  let treeCatText = document.querySelector('.tree-box')
+  let weedCatText = document.querySelector('.weed-box')
+  let grassCatText = document.querySelector('.grass-box')
+  let moldCatText = document.querySelector('.mold-box')
+
+  treeCatText.style.color = pollenMap.get(treeCategory)
+  weedCatText.style.color = pollenMap.get(weedCategory)
+  grassCatText.style.color = pollenMap.get(grassCategory)
+  moldCatText.style.color = pollenMap.get(moldCategory)
+
+
+  // setting location display text
+  const [location, setLocation] = useState(`Check your location's pollen count`)
+
+  // getting api info for location and pollen count
+  // location api
 const getLocation = async (e) => {
   e.preventDefault()
 
@@ -34,14 +61,27 @@ const getLocation = async (e) => {
 
   const response = await fetch(`${baseLocationURL}?apikey=${apiKey}&q=${citySearchText}&offset=1`)
   let data = await response.json()
+
+  // cityCode is needed for pollen api
   let cityCode = data[0].Key
-  
-  await getPollenCount(cityCode)
+
+  console.log(data[0].EnglishName)
+  console.log(data[0].AdministrativeArea.ID)
+  console.log(data[0])
+
+  // setting location text from location api
+  setLocation(data[0].EnglishName + ', ' + data[0].AdministrativeArea.ID)
+  // clears input field 
+  cancelBtn()
+
+  // calling pollen api
+  await getPollenCount(cityCode, apiKey)
 
 }
 
-const getPollenCount = async (c) => {
-  const apiKey = process.env.REACT_APP_API_KEY
+// get pollen count from api
+const getPollenCount = async (c, key) => {
+  const apiKey = key
   const basePollenURL = 'http://dataservice.accuweather.com/forecasts/v1/daily/1day/'
   let city = c
 
@@ -54,6 +94,7 @@ const getPollenCount = async (c) => {
   console.log(data.DailyForecasts[0].AirAndPollen[4].Category)
   console.log(data.DailyForecasts[0].AirAndPollen)
 
+  // setting pollen categorys and values to display
   setTreeCategory(data.DailyForecasts[0].AirAndPollen[4].Category)
   setGrassCategory(data.DailyForecasts[0].AirAndPollen[1].Category)
   setWeedCategory(data.DailyForecasts[0].AirAndPollen[3].Category)
@@ -68,7 +109,6 @@ const getPollenCount = async (c) => {
 }
 
 
-
   return(
     <main>
       {/* search bar  */}
@@ -77,7 +117,7 @@ const getPollenCount = async (c) => {
           <input onMouseDown={showCancelBtn} type="text" name="city" placeholder="Search" />
           <a onClick={cancelBtn} id="clear-btn" className="clear-btn" href="#">Cancel</a>
         </form>
-        <p className="location-text">Check your location's pollen count</p>
+        <p className="location-text">{location}</p>
       </div>
 
       {/* pollen display area */}
@@ -97,7 +137,7 @@ const getPollenCount = async (c) => {
         </div>
       
 
-      {/* weeds display */}
+        {/* weeds display */}
         <div className="pollen-display weed">
           <h1 className='pollen-heading'>Weeds</h1>
           <div className='pollen-value'>
@@ -111,7 +151,11 @@ const getPollenCount = async (c) => {
           </div> 
         </div>
 
-      {/* grass display */}
+
+
+        
+
+        {/* grass display */}
         <div className="pollen-display grass">
           <h1 className='pollen-heading'>Grass</h1>
           <div className='pollen-value'>
@@ -126,7 +170,8 @@ const getPollenCount = async (c) => {
           </div> 
         </div>
 
-      {/* mold display */}
+
+        {/* mold display */}
         <div className="pollen-display mold">
           <h1 className='pollen-heading'>Mold</h1>
           <div className='pollen-value'>
@@ -136,7 +181,7 @@ const getPollenCount = async (c) => {
           <h1 id="mold-box" className="mold-box">{moldCategory}</h1>
           <div className="color-box">
             <div className="color"></div>
-            <div className="indicator grass-indicator"></div>
+            <div className="indicator mold-indicator"></div>
           </div> 
         </div>
       

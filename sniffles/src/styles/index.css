@@ -10,7 +10,7 @@
 
 body {
   background-color: #e4e4e4;
-  background-image: url(../public/img/green_field.jpg);
+  background-image: url(../img/green_field.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -131,26 +131,6 @@ main .location-text {
 .display-wrap .pollen-display .pollen-value p {
   margin: 0;
 }
-.display-wrap .tree-box {
-  color: green;
-  text-shadow: 0 0 4px green;
-  margin: 0;
-}
-.display-wrap .weed-box {
-  color: green;
-  text-shadow: 0 0 4px green;
-  margin: 0;
-}
-.display-wrap .grass-box {
-  color: green;
-  text-shadow: 0 0 4px green;
-  margin: 0;
-}
-.display-wrap .mold-box {
-  color: green !important;
-  text-shadow: 0 0 4px green !important;
-  margin: 0;
-}
 .display-wrap .color-box {
   height: 50px;
   width: 100%;
@@ -250,42 +230,61 @@ main .location-text {
     left: 20%;
   }
 }
+.display-wrap .color-box .mold-indicator {
+  top: 0;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+  -webkit-animation-name: mold-slider;
+          animation-name: mold-slider;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+@-webkit-keyframes mold-slider {
+  0% {
+    left: 2%;
+  }
+  100% {
+    left: 20%;
+  }
+}
+@keyframes mold-slider {
+  0% {
+    left: 2%;
+  }
+  100% {
+    left: 20%;
+  }
+}
 
 footer {
   margin-top: 2em;
-  height: 100px;
-  background-color: rgb(0, 0, 0);
-  display: flex;
-  align-items: flex-end;
-  padding-left: 2em;
-  display: flex;
-  justify-content: space-between;
+  height: 110px;
+  background-color: rgba(0, 0, 0, 0.7);
 }
-footer a {
-  padding-bottom: 3.5rem;
-  color: #6c98c5;
-}
-footer p {
-  color: #6c98c5;
-  padding-bottom: 0;
-  margin-bottom: 3.5rem;
-}
-footer div {
+footer .footer-container {
   display: flex;
   align-items: center;
-  padding-bottom: 1.5rem;
-  padding-right: 3rem;
+  justify-content: space-between;
+  color: #6c98c5;
+  padding: 2em 2em 0;
 }
-footer div p {
-  padding-right: 0.5rem;
-  margin-bottom: 1rem;
+footer .footer-container .react-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0.3em;
+}
+footer .footer-container .react-text span {
+  padding-bottom: 1em;
+}
+footer .footer-container .social-icons a {
+  padding: 0.3em;
 }
 
 @media (max-width: 800px) {
   .search-bar {
     padding: 0;
   }
-
   .display-wrap {
     flex-direction: column;
     margin-left: 2rem;
@@ -293,6 +292,15 @@ footer div p {
   }
   .display-wrap .pollen-display {
     width: 94% !important;
+  }
+  footer {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    min-height: 200px;
+  }
+  footer .footer-container {
+    flex-direction: column;
   }
 }
 @media (max-width: 500px) {
