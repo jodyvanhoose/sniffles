@@ -1,5 +1,6 @@
 import { useState } from 'react'
-
+import { FaVirus, FaTree } from 'react-icons/fa';
+import { GiFireFlower, GiHighGrass, GiBeech } from "react-icons/gi";
 
 function Main() {
 // animiate input and show cancel btn
@@ -69,7 +70,7 @@ const cancelBtn = () =>{
 
 
   // getting api info for location and pollen count
-  
+
   // location api
 const getLocation = async (e) => {
   e.preventDefault()
@@ -160,8 +161,13 @@ try {
 
       {/* tree display */}
       <div className="display-wrap">
+
+        <div className="tree-weed-wrap">
+
+        
         <div className="pollen-display tree">
           <h1 className='pollen-heading'>Trees</h1>
+          <FaTree />
           <div className='pollen-value'>
             <h1 className='pollen_value_text'>{treeValue}</h1>
             <p>pp/m<span>3</span></p>
@@ -177,6 +183,7 @@ try {
         {/* weeds display */}
         <div className="pollen-display weed">
           <h1 className='pollen-heading'>Weeds</h1>
+          <GiFireFlower />
           <div className='pollen-value'>
             <h1 className='pollen_value_text'>{weedValue}</h1>
             <p>pp/m<span>3</span></p>
@@ -187,11 +194,16 @@ try {
             <div className="indicator weed-indicator"></div>
           </div> 
         </div>
+        </div>
 
 
+        <div className="grass-mold-wrap">
+
+        
         {/* grass display */}
         <div className="pollen-display grass">
           <h1 className='pollen-heading'>Grass</h1>
+          <GiHighGrass />
           <div className='pollen-value'>
             <h1 className='pollen_value_text'>{grassValue}</h1>
             <p>pp/m<span>3</span></p>
@@ -208,6 +220,7 @@ try {
         {/* mold display */}
         <div className="pollen-display mold">
           <h1 className='pollen-heading'>Mold</h1>
+          <FaVirus />
           <div className='pollen-value'>
             <h1 className='pollen_value_text'>{moldValue}</h1>
             <p>spores</p>
@@ -217,6 +230,8 @@ try {
             <div className="color"></div>
             <div className="indicator mold-indicator"></div>
           </div> 
+        </div>
+
         </div>
       
     </div>

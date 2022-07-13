@@ -46,16 +46,25 @@ header{
   margin-top: 2rem;
   align-items: center;
 
+  span{
+    display: flex;
+    align-items: center;
+  }
+
   h1{
-    border-bottom: 1px solid $primaryColor;
+    // border-bottom: 1px solid $primaryColor;
     letter-spacing: 2px;
+    padding-left: .5em;
+    margin-top: .3em;
+    
+    color: yellow;
   }
 
   nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    color: yellow;
     
   }
 }
@@ -117,13 +126,23 @@ main{
 // pollen display section
 .display-wrap{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   // flex-direction: column;
+  margin: 0;
+
+  .tree-weed-wrap, .grass-mold-wrap{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+  }
   
   .pollen-display{
     border-radius: 25px;
     width: 100%;
+    min-width: 220px;
     min-height: 450px;
     margin: 0 1em 1em 1em;
     padding-top: 2em;
@@ -335,6 +354,19 @@ footer{
 
 // media queries
 
+@media (max-width: 1020px){
+  .display-wrap{
+    flex-direction: column;
+
+    .pollen-display{
+      min-width: 350px !important;
+    }
+  }
+
+  
+  
+}
+
 @media (max-width: 800px){
  
 
@@ -347,8 +379,12 @@ footer{
     margin-left: 2rem;
     margin-right: 3rem;
 
+    
+
     .pollen-display{
-      width: 94% !important;
+      // width: 94% !important;
+      min-width: 250px !important;
+      
     }
   }
 
@@ -364,7 +400,14 @@ footer{
 }
 
 
+  @media (max-width: 600px){
+    .display-wrap{
   
+      .tree-weed-wrap, .grass-mold-wrap{
+        flex-direction: column;
+      }
+    }
+  }
 
 
 @media (max-width: 500px){
@@ -377,3 +420,4 @@ footer{
 
   }
 }
+

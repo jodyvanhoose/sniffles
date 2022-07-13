@@ -41,14 +41,21 @@ header {
   margin-top: 2rem;
   align-items: center;
 }
+header span {
+  display: flex;
+  align-items: center;
+}
 header h1 {
-  border-bottom: 1px solid #6c98c5;
   letter-spacing: 2px;
+  padding-left: 0.5em;
+  margin-top: 0.3em;
+  color: yellow;
 }
 header nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: yellow;
 }
 
 main {
@@ -107,12 +114,21 @@ main .location-text {
 
 .display-wrap {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
+  margin: 0;
+}
+.display-wrap .tree-weed-wrap, .display-wrap .grass-mold-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
 }
 .display-wrap .pollen-display {
   border-radius: 25px;
   width: 100%;
+  min-width: 220px;
   min-height: 450px;
   margin: 0 1em 1em 1em;
   padding-top: 2em;
@@ -294,6 +310,14 @@ footer .footer-container .social-icons:focus {
   outline: none;
 }
 
+@media (max-width: 1020px) {
+  .display-wrap {
+    flex-direction: column;
+  }
+  .display-wrap .pollen-display {
+    min-width: 350px !important;
+  }
+}
 @media (max-width: 800px) {
   .search-bar {
     padding: 0;
@@ -304,7 +328,7 @@ footer .footer-container .social-icons:focus {
     margin-right: 3rem;
   }
   .display-wrap .pollen-display {
-    width: 94% !important;
+    min-width: 250px !important;
   }
   footer {
     height: -webkit-fit-content;
@@ -313,6 +337,11 @@ footer .footer-container .social-icons:focus {
     min-height: 200px;
   }
   footer .footer-container {
+    flex-direction: column;
+  }
+}
+@media (max-width: 600px) {
+  .display-wrap .tree-weed-wrap, .display-wrap .grass-mold-wrap {
     flex-direction: column;
   }
 }
