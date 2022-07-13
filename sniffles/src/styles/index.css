@@ -4,6 +4,13 @@
   box-sizing: border-box;
 }
 
+:root {
+  --tree: 5%;
+  --grass: 5%;
+  --weed: 5%;
+  --mold: 5%;
+}
+
 * {
   scroll-behavior: smooth;
 }
@@ -90,6 +97,9 @@ main .search-bar .clear-btn {
   font-weight: 200;
   color: #6c98c5;
 }
+main .search-bar .clear-btn:focus {
+  outline: none;
+}
 main .location-text {
   font-size: 2em;
   color: #6c98c5;
@@ -169,7 +179,7 @@ main .location-text {
     left: 2%;
   }
   100% {
-    left: 20%;
+    left: var(--tree);
   }
 }
 @keyframes tree-slider {
@@ -177,7 +187,7 @@ main .location-text {
     left: 2%;
   }
   100% {
-    left: 20%;
+    left: var(--tree);
   }
 }
 .display-wrap .color-box .weed-indicator {
@@ -194,7 +204,7 @@ main .location-text {
     left: 2%;
   }
   100% {
-    left: 20%;
+    left: var(--weed);
   }
 }
 @keyframes weed-slider {
@@ -202,7 +212,7 @@ main .location-text {
     left: 2%;
   }
   100% {
-    left: 20%;
+    left: var(--weed);
   }
 }
 .display-wrap .color-box .grass-indicator {
@@ -219,7 +229,7 @@ main .location-text {
     left: 2%;
   }
   100% {
-    left: 20%;
+    left: var(--grass);
   }
 }
 @keyframes grass-slider {
@@ -227,7 +237,7 @@ main .location-text {
     left: 2%;
   }
   100% {
-    left: 20%;
+    left: var(--grass);
   }
 }
 .display-wrap .color-box .mold-indicator {
@@ -244,7 +254,7 @@ main .location-text {
     left: 2%;
   }
   100% {
-    left: 20%;
+    left: var(--mold);
   }
 }
 @keyframes mold-slider {
@@ -252,7 +262,7 @@ main .location-text {
     left: 2%;
   }
   100% {
-    left: 20%;
+    left: var(--mold);
   }
 }
 
@@ -279,6 +289,9 @@ footer .footer-container .react-text span {
 }
 footer .footer-container .social-icons a {
   padding: 0.3em;
+}
+footer .footer-container .social-icons:focus {
+  outline: none;
 }
 
 @media (max-width: 800px) {

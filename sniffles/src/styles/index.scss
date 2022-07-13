@@ -7,6 +7,14 @@
   box-sizing: border-box;
 }
 
+// setting variables to change animation indicator
+:root {
+  --tree: 5%;
+  --grass: 5%;
+  --weed: 5%;
+  --mold: 5%;
+}
+
 *{
   scroll-behavior: smooth;
 }
@@ -87,11 +95,16 @@ main{
       }
     }
 
+    // only displays when input is in focus
     .clear-btn{
       display: none;
       padding: .6em;
       font-weight: 200;
       color: $primaryColor;
+
+      &:focus{
+        outline: none;
+      }
     }
   }
 
@@ -220,7 +233,7 @@ main{
         left: 2%;
       }
       100%{
-        left: 20%;
+        left: var(--tree);
       }
     }
 
@@ -236,7 +249,7 @@ main{
         left: 2%;
       }
       100%{
-        left: 20%;
+        left: var(--weed);
       }
     }
 
@@ -252,7 +265,7 @@ main{
         left: 2%;
       }
       100%{
-        left: 20%;
+        left: var(--grass);
       }
     }
 
@@ -268,7 +281,7 @@ main{
         left: 2%;
       }
       100%{
-        left: 20%;
+        left: var(--mold);
       }
     }
   }
@@ -309,6 +322,10 @@ footer{
         padding: .3em;
         // margin-bottom: .5em;
       }      
+
+      &:focus{
+        outline: none;
+      }
     }
   }
 

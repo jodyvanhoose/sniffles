@@ -15,6 +15,7 @@ const cancelBtn = () =>{
   document.getElementById('clear-btn').style.display = 'none'
 }
 
+
 // setting use state for pollen level and values
   const [treeCategory, setTreeCategory] = useState('')
   const [grassCategory, setGrassCategory] = useState('')
@@ -46,21 +47,42 @@ const cancelBtn = () =>{
   moldCatText.style.color = pollenMap.get(moldCategory)
 
 
+  // setting animation indicator
+  let r = document.querySelector(':root')
+  
+  const animateMap = new Map()
+  animateMap.set('Good', '5%')
+  animateMap.set('Low', '25%')
+  animateMap.set('Moderate', '50%')
+  animateMap.set('High', '75%')
+  animateMap.set('Unhealthy', '85%')
+  animateMap.set('Hazardous', '95%')
+
+  r.style.setProperty('--tree', animateMap.get(treeCategory))
+  r.style.setProperty('--grass', animateMap.get(grassCategory))
+  r.style.setProperty('--weed', animateMap.get(weedCategory))
+  r.style.setProperty('--mold', animateMap.get(moldCategory))
+
+
   // setting location display text
   const [location, setLocation] = useState(`Check your location's pollen count`)
 
+
   // getting api info for location and pollen count
+  
   // location api
 const getLocation = async (e) => {
   e.preventDefault()
 
-  // get location api
+  try {
+    // get location api
   const apiKey = process.env.REACT_APP_API_KEY
   const baseLocationURL = 'http://dataservice.accuweather.com/locations/v1/cities/search'
   let citySearchText = document.querySelector('input').value
 
   const response = await fetch(`${baseLocationURL}?apikey=${apiKey}&q=${citySearchText}&offset=1`)
   let data = await response.json()
+
 
   // cityCode is needed for pollen api
   let cityCode = data[0].Key
@@ -69,18 +91,30 @@ const getLocation = async (e) => {
   console.log(data[0].AdministrativeArea.ID)
   console.log(data[0])
 
+
   // setting location text from location api
   setLocation(data[0].EnglishName + ', ' + data[0].AdministrativeArea.ID)
+
+
   // clears input field 
   cancelBtn()
 
+
   // calling pollen api
   await getPollenCount(cityCode, apiKey)
+  } catch (error) {
+    console.log(error)
+  }
+
+  
 
 }
 
 // get pollen count from api
 const getPollenCount = async (c, key) => {
+
+
+try {
   const apiKey = key
   const basePollenURL = 'http://dataservice.accuweather.com/forecasts/v1/daily/1day/'
   let city = c
@@ -94,6 +128,7 @@ const getPollenCount = async (c, key) => {
   console.log(data.DailyForecasts[0].AirAndPollen[4].Category)
   console.log(data.DailyForecasts[0].AirAndPollen)
 
+
   // setting pollen categorys and values to display
   setTreeCategory(data.DailyForecasts[0].AirAndPollen[4].Category)
   setGrassCategory(data.DailyForecasts[0].AirAndPollen[1].Category)
@@ -103,9 +138,10 @@ const getPollenCount = async (c, key) => {
   setGrassValue(data.DailyForecasts[0].AirAndPollen[1].Value)
   setWeedValue(data.DailyForecasts[0].AirAndPollen[3].Value)
   setMoldValue(data.DailyForecasts[0].AirAndPollen[2].Value)
+} catch (error) {
+  console.log(error)
+}
   
-
-
 }
 
 
@@ -121,10 +157,11 @@ const getPollenCount = async (c, key) => {
       </div>
 
       {/* pollen display area */}
+
       {/* tree display */}
       <div className="display-wrap">
         <div className="pollen-display tree">
-          <h1 className='pollen-heading'>Tree</h1>
+          <h1 className='pollen-heading'>Trees</h1>
           <div className='pollen-value'>
             <h1 className='pollen_value_text'>{treeValue}</h1>
             <p>pp/m<span>3</span></p>
@@ -151,9 +188,6 @@ const getPollenCount = async (c, key) => {
           </div> 
         </div>
 
-
-
-        
 
         {/* grass display */}
         <div className="pollen-display grass">
