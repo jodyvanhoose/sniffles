@@ -46,25 +46,24 @@ header{
   margin-top: 2rem;
   align-items: center;
 
-  span{
-    display: flex;
-    align-items: center;
-  }
+  
 
-  h1{
-    // border-bottom: 1px solid $primaryColor;
-    letter-spacing: 2px;
-    padding-left: .5em;
-    margin-top: .3em;
-    
-    color: yellow;
-  }
+ 
 
   nav{
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    color: yellow;
+    align-items: flex-end;
+    color: #fff;
+    
+    h1{
+      // border-bottom: 1px solid $primaryColor;
+      letter-spacing: 2px;
+      padding-left: .5em;
+      margin-top: .3em;
+      color: #fff;
+    }
+
     
   }
 }
@@ -330,9 +329,30 @@ footer{
       justify-content: center;
       padding-top: .3em;
       // padding-bottom: 1.5rem;
-     
+
       span{
         padding-bottom: 1em;
+
+        .App-logo {
+          height: 5rem;
+        }
+
+        .App-logo {
+          animation: App-logo-spin infinite 20s linear;
+        }
+
+        .App-link {
+          color: #61dafb;
+        }
+
+        @keyframes App-logo-spin {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
       }
     }
 
@@ -348,6 +368,9 @@ footer{
     }
   }
 
+  .accuweather-logo{
+    height: 1.5rem;
+  }
  
 }
 
@@ -372,6 +395,7 @@ footer{
 
   .search-bar{
     padding: 0;
+    color: yellow
   }
   
   .display-wrap{
@@ -401,6 +425,10 @@ footer{
 
 
   @media (max-width: 600px){
+
+    body{
+      transform: rotate(90 deg);
+    }
     .display-wrap{
   
       .tree-weed-wrap, .grass-mold-wrap{
@@ -411,13 +439,9 @@ footer{
 
 
 @media (max-width: 500px){
-  nav{
-    flex-direction: column;
-
-    h1{
-      margin: .5em 0 0 0;
-    }
-
+  header{
+    margin: 0;
+    padding: 0%;
   }
 }
 

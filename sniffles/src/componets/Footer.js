@@ -1,5 +1,5 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from '../logo.svg';
+import accuWeatherLogoDark from '../AccuweatherLogoDark.png'
 import { FaGithubSquare, FaLinkedin } from 'react-icons/fa';
 
 function Footer() {
@@ -7,19 +7,22 @@ function Footer() {
     <footer>
       <div className="footer-container">
         {/* <a href="#top">Return to top</a> */}
-      <p className='copy'>Copyright &copy; 2022</p>
+      <p className='copy'>Copyright &copy; 2022<br/><img className='accuweather-logo' src={accuWeatherLogoDark} alt="" /></p>
+      
       <div className='react-text'>
         
         <p>Created with React</p>
         <span><img src={logo} className="App-logo" alt="logo" /></span>
-
+        
       </div>
       <div className='social-icons'>
         <a href="https://github.com/jodyvanhoose" target="blank"><FaGithubSquare /></a>
         <a href="https://www.linkedin.com/in/jody-vanhoose/" target="_blank"><FaLinkedin /></a>
       </div>
-        
+      
       </div>
+
+      
       
     </footer>
   )

@@ -41,21 +41,17 @@ header {
   margin-top: 2rem;
   align-items: center;
 }
-header span {
-  display: flex;
-  align-items: center;
-}
-header h1 {
-  letter-spacing: 2px;
-  padding-left: 0.5em;
-  margin-top: 0.3em;
-  color: yellow;
-}
 header nav {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  color: yellow;
+  align-items: flex-end;
+  color: #fff;
+}
+header nav h1 {
+  letter-spacing: 2px;
+  padding-left: 0.5em;
+  margin-top: 0.3em;
+  color: #fff;
 }
 
 main {
@@ -303,11 +299,40 @@ footer .footer-container .react-text {
 footer .footer-container .react-text span {
   padding-bottom: 1em;
 }
+footer .footer-container .react-text span .App-logo {
+  height: 5rem;
+}
+footer .footer-container .react-text span .App-logo {
+  -webkit-animation: App-logo-spin infinite 20s linear;
+          animation: App-logo-spin infinite 20s linear;
+}
+footer .footer-container .react-text span .App-link {
+  color: #61dafb;
+}
+@-webkit-keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 footer .footer-container .social-icons a {
   padding: 0.3em;
 }
 footer .footer-container .social-icons:focus {
   outline: none;
+}
+footer .accuweather-logo {
+  height: 1.5rem;
 }
 
 @media (max-width: 1020px) {
@@ -321,6 +346,7 @@ footer .footer-container .social-icons:focus {
 @media (max-width: 800px) {
   .search-bar {
     padding: 0;
+    color: yellow;
   }
   .display-wrap {
     flex-direction: column;
@@ -341,15 +367,16 @@ footer .footer-container .social-icons:focus {
   }
 }
 @media (max-width: 600px) {
+  body {
+    transform: rotate(90 deg);
+  }
   .display-wrap .tree-weed-wrap, .display-wrap .grass-mold-wrap {
     flex-direction: column;
   }
 }
 @media (max-width: 500px) {
-  nav {
-    flex-direction: column;
-  }
-  nav h1 {
-    margin: 0.5em 0 0 0;
+  header {
+    margin: 0;
+    padding: 0%;
   }
 }/*# sourceMappingURL=index.css.map */

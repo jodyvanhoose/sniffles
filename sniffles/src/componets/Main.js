@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { FaVirus, FaTree } from 'react-icons/fa';
 import { GiFireFlower, GiHighGrass, GiBeech } from "react-icons/gi";
 
+
 function Main() {
 // animiate input and show cancel btn
 const showCancelBtn = () =>{
@@ -28,43 +29,79 @@ const cancelBtn = () =>{
   const [moldValue, setMoldValue] = useState(null)
 
 
-  // setting pollen value color
-  const pollenMap = new Map()
-  pollenMap.set('Good', 'darkgreen')
-  pollenMap.set('Low', 'green')
-  pollenMap.set('Moderate', 'orange')
-  pollenMap.set('High', 'red')
-  pollenMap.set('Unhealthy', 'dark red')
-  pollenMap.set('Hazardous', 'dark red')
 
+  // setting pollen value color
+ 
+  const pollenCatTextColor = (category, catText) =>{
+    
+    switch(category){
+      case 'Good':
+        catText.style.color = 'darkgreen'
+        break;
+      case 'Low':
+        catText.style.color = 'green'
+        break;
+      case 'Moderate':
+        catText.style.color = 'yellow'
+        break;
+      case 'High':
+        catText.style.color = 'orangered'
+        break;
+      case 'Unhealthy':
+        catText.style.color = 'red'
+        break;
+      case 'Hazardous':
+        catText.style.color = 'darkred'
+    }
+   
+  }
+
+  // setting animation indicator
+  let r = document.querySelector(':root')
+
+  const pollenAnimateIndicator = (category, pollenVar) =>{
+    
+    switch(category){
+      case 'Good':
+        r.style.setProperty(pollenVar, '5%') 
+        break;
+      case 'Low':
+        r.style.setProperty(pollenVar, '25%') 
+        break;
+      case 'Moderate':
+        r.style.setProperty(pollenVar, '50%') 
+        break;
+      case 'High':
+        r.style.setProperty(pollenVar, '70%') 
+        break;
+      case 'Unhealthy':
+        r.style.setProperty(pollenVar, '85%') 
+        break;
+      case 'Hazardous':
+        r.style.setProperty(pollenVar, '95%') 
+    }
+   
+  }
+  
+ 
+  // targeting pollen text by class name
   let treeCatText = document.querySelector('.tree-box')
   let weedCatText = document.querySelector('.weed-box')
   let grassCatText = document.querySelector('.grass-box')
   let moldCatText = document.querySelector('.mold-box')
 
-  treeCatText.style.color = pollenMap.get(treeCategory)
-  weedCatText.style.color = pollenMap.get(weedCategory)
-  grassCatText.style.color = pollenMap.get(grassCategory)
-  moldCatText.style.color = pollenMap.get(moldCategory)
 
-
-  // setting animation indicator
-  let r = document.querySelector(':root')
+  pollenCatTextColor(treeCategory, treeCatText)
+  pollenCatTextColor(grassCategory, grassCatText)
+  pollenCatTextColor(weedCategory, weedCatText)
+  pollenCatTextColor(moldCategory, moldCatText)
   
-  const animateMap = new Map()
-  animateMap.set('Good', '5%')
-  animateMap.set('Low', '25%')
-  animateMap.set('Moderate', '50%')
-  animateMap.set('High', '75%')
-  animateMap.set('Unhealthy', '85%')
-  animateMap.set('Hazardous', '95%')
+  pollenAnimateIndicator(treeCategory, '--tree')
+  pollenAnimateIndicator(grassCategory, '--grass')
+  pollenAnimateIndicator(weedCategory, '--weed')
+  pollenAnimateIndicator(moldCategory, '--mold')
 
-  r.style.setProperty('--tree', animateMap.get(treeCategory))
-  r.style.setProperty('--grass', animateMap.get(grassCategory))
-  r.style.setProperty('--weed', animateMap.get(weedCategory))
-  r.style.setProperty('--mold', animateMap.get(moldCategory))
-
-
+ 
   // setting location display text
   const [location, setLocation] = useState(`Check your location's pollen count`)
 
@@ -105,6 +142,10 @@ const getLocation = async (e) => {
   await getPollenCount(cityCode, apiKey)
   } catch (error) {
     console.log(error)
+    if(TypeError){
+      setLocation('Please enter a valid location')
+    }
+    
   }
 
   
@@ -139,8 +180,11 @@ try {
   setGrassValue(data.DailyForecasts[0].AirAndPollen[1].Value)
   setWeedValue(data.DailyForecasts[0].AirAndPollen[3].Value)
   setMoldValue(data.DailyForecasts[0].AirAndPollen[2].Value)
+
+  // pollenCatTextColor()
 } catch (error) {
   console.log(error)
+  
 }
   
 }
@@ -223,7 +267,7 @@ try {
           <FaVirus />
           <div className='pollen-value'>
             <h1 className='pollen_value_text'>{moldValue}</h1>
-            <p>spores</p>
+            <p>pp/m<span>3</span></p>
           </div>
           <h1 id="mold-box" className="mold-box">{moldCategory}</h1>
           <div className="color-box">
