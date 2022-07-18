@@ -35,8 +35,9 @@ ___
 
 
 ___
-## Getting Started
+## Instructions for running this program
 * An API key is required to run this application. You may obtain a free key from <a href="http://codekentucky.org/" target="_blank">Accuweather</a>. 
+* Rename the .env.sample file to .env.local
 * Copy key and place it into the .env.local file as follows REACT_APP_API_KEY=yourapikey.
 
 

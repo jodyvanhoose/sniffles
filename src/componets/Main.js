@@ -1,9 +1,12 @@
 import { useState } from 'react'
 import { FaVirus, FaTree } from 'react-icons/fa';
-import { GiFireFlower, GiHighGrass, GiBeech } from "react-icons/gi";
+import { GiFireFlower, GiHighGrass } from "react-icons/gi";
 
 
 function Main() {
+
+
+
 // animiate input and show cancel btn
 const showCancelBtn = () =>{
   document.getElementById('clear-btn').style.display = 'block'
@@ -53,7 +56,6 @@ const cancelBtn = () =>{
       case 'Hazardous':
         catText.style.color = 'darkred'
     }
-   
   }
 
   // setting animation indicator
@@ -80,7 +82,6 @@ const cancelBtn = () =>{
       case 'Hazardous':
         r.style.setProperty(pollenVar, '95%') 
     }
-   
   }
   
  
@@ -89,7 +90,6 @@ const cancelBtn = () =>{
   let weedCatText = document.querySelector('.weed-box')
   let grassCatText = document.querySelector('.grass-box')
   let moldCatText = document.querySelector('.mold-box')
-
 
   pollenCatTextColor(treeCategory, treeCatText)
   pollenCatTextColor(grassCategory, grassCatText)
@@ -145,11 +145,7 @@ const getLocation = async (e) => {
     if(TypeError){
       setLocation('Please enter a valid location')
     }
-    
   }
-
-  
-
 }
 
 // get pollen count from api
@@ -195,7 +191,7 @@ try {
       {/* search bar  */}
       <div className="row">
         <form onSubmit={getLocation} className="search-bar column" action="">
-          <input onMouseDown={showCancelBtn} type="text" name="city" placeholder="Search" />
+          <input onMouseDown={showCancelBtn} type="text" name="city" placeholder='Search' />
           <a onClick={cancelBtn} id="clear-btn" className="clear-btn" href="#">Cancel</a>
         </form>
         <p className="location-text">{location}</p>

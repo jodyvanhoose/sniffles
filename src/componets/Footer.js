@@ -7,17 +7,17 @@ function Footer() {
     <footer>
       <div className="footer-container">
         {/* <a href="#top">Return to top</a> */}
-      <p className='copy'>Copyright &copy; 2022<br/><img className='accuweather-logo' src={accuWeatherLogoDark} alt="" /></p>
+      <img className='accuweather-logo' src={accuWeatherLogoDark} alt="Accuweather logo" />
       
       <div className='react-text'>
         
         <p>Created with React</p>
-        <span><img src={logo} className="App-logo" alt="logo" /></span>
+        <span><img src={logo} className="App-logo" alt="React logo" /></span>
         
       </div>
       <div className='social-icons'>
         <a href="https://github.com/jodyvanhoose" target="blank"><FaGithubSquare /></a>
-        <a href="https://www.linkedin.com/in/jody-vanhoose/" target="_blank"><FaLinkedin /></a>
+        <a href="https://www.linkedin.com/in/jody-vanhoose/" target="blank"><FaLinkedin /></a>
       </div>
       
       </div>
