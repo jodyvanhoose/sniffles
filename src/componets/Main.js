@@ -55,6 +55,9 @@ const cancelBtn = () =>{
         break;
       case 'Hazardous':
         catText.style.color = 'darkred'
+        break;
+      default:
+        break;
     }
   }
 
@@ -81,6 +84,9 @@ const cancelBtn = () =>{
         break;
       case 'Hazardous':
         r.style.setProperty(pollenVar, '95%') 
+        break;
+      default:
+        break;
     }
   }
   
@@ -177,7 +183,6 @@ try {
   setWeedValue(data.DailyForecasts[0].AirAndPollen[3].Value)
   setMoldValue(data.DailyForecasts[0].AirAndPollen[2].Value)
 
-  // pollenCatTextColor()
 } catch (error) {
   console.log(error)
   
