@@ -187,7 +187,7 @@ try {
       <div className="row">
         <form onSubmit={getLocation} className="search-bar column" action="">
           <input value={searchVal} onChange={e =>  setSearchVal(e.target.value)} type="text" name="city" placeholder='Search' />
-          {searchVal.length > 0 && <button onClick={() => setSearchVal('')} id="clear-btn" className="clear-btn" href="#">Cancel</button>}
+          {searchVal.length > 0 && <button onClick={() => setSearchVal('')} id="clear-btn" className="clear-btn" href="#" type='button'>Cancel</button>}
           
         </form>
         <p className="location-text">{location}</p>
