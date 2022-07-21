@@ -105,10 +105,12 @@ main{
 
     // only displays when input is in focus
     .clear-btn{
-      display: none;
-      padding: .6em;
+      // display: none;
+      padding: .4em;
       font-weight: 200;
       color: $primaryColor;
+      border: none;
+      text-transform: capitalize;
 
       &:focus{
         outline: none;

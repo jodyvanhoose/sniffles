@@ -1,4 +1,4 @@
-import '../styles/index.css'
+import '../styles/index.scss'
 import Nav from './Nav';
 import Main from './Main';
 import Footer from './Footer';

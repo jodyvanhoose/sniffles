@@ -5,20 +5,10 @@ import { GiFireFlower, GiHighGrass } from "react-icons/gi";
 
 function Main() {
 
+  // setting input value
+const [searchVal, setSearchVal] = useState('')
 
 
-// animiate input and show cancel btn
-const showCancelBtn = () =>{
-  document.getElementById('clear-btn').style.display = 'block'
-}
-
-
-
-// cancels and clears input
-const cancelBtn = () =>{
-  document.querySelector('input').value = ''
-  document.getElementById('clear-btn').style.display = 'none'
-}
 
 
 // setting use state for pollen level and values
@@ -89,6 +79,7 @@ const cancelBtn = () =>{
         break;
     }
   }
+
   
  
   // targeting pollen text by class name
@@ -122,9 +113,8 @@ const getLocation = async (e) => {
     // get location api
   const apiKey = process.env.REACT_APP_API_KEY
   const baseLocationURL = 'http://dataservice.accuweather.com/locations/v1/cities/search'
-  let citySearchText = document.querySelector('input').value
 
-  const response = await fetch(`${baseLocationURL}?apikey=${apiKey}&q=${citySearchText}&offset=1`)
+  const response = await fetch(`${baseLocationURL}?apikey=${apiKey}&q=${searchVal}&offset=1`)
   let data = await response.json()
 
 
@@ -141,7 +131,7 @@ const getLocation = async (e) => {
 
 
   // clears input field 
-  cancelBtn()
+  setSearchVal('')
 
 
   // calling pollen api
@@ -196,8 +186,9 @@ try {
       {/* search bar  */}
       <div className="row">
         <form onSubmit={getLocation} className="search-bar column" action="">
-          <input onMouseDown={showCancelBtn} type="text" name="city" placeholder='Search' />
-          <a onClick={cancelBtn} id="clear-btn" className="clear-btn" href="#">Cancel</a>
+          <input value={searchVal} onChange={e =>  setSearchVal(e.target.value)} type="text" name="city" placeholder='Search' />
+          {searchVal.length > 0 && <button onClick={() => setSearchVal('')} id="clear-btn" className="clear-btn" href="#">Cancel</button>}
+          
         </form>
         <p className="location-text">{location}</p>
       </div>
