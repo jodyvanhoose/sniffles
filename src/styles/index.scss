@@ -243,67 +243,68 @@ main{
 
     .tree-indicator{
       top: 0;
-      animation-duration: 3s;
-      animation-name: tree-slider;  
-      animation-fill-mode: forwards;
+      // left: 2%;
+      // animation-duration: 3s;
+      // animation-name: tree-slider;  
+      // animation-fill-mode: forwards;
     }
 
-    @keyframes tree-slider{
-      0%{
-        left: 2%;
-      }
-      100%{
-        left: var(--tree);
-      }
-    }
-
+    // @keyframes tree-slider{
+    //   0%{
+    //     left: 2%;
+    //   }
+    //   100%{
+    //     left: 2%;
+    //   }
+    // }
+    
     .weed-indicator{
       top: 0;
-      animation-duration: 3s;
-      animation-name: weed-slider;  
-      animation-fill-mode: forwards;
+      // animation-duration: 3s;
+      // animation-name: weed-slider;  
+      // animation-fill-mode: forwards;
     }
 
-    @keyframes weed-slider{
-      0%{
-        left: 2%;
-      }
-      100%{
-        left: var(--weed);
-      }
-    }
+    // @keyframes weed-slider{
+    //   0%{
+    //     left: 2%;
+    //   }
+    //   100%{
+    //     // left: weedPosition;
+    //   }
+    // }
 
     .grass-indicator{
       top: 0;
-      animation-duration: 3s;
-      animation-name: grass-slider;  
-      animation-fill-mode: forwards;
+      // animation-duration: 3s;
+      // animation-name: grass-slider;  
+      // animation-fill-mode: forwards;
     }
 
-    @keyframes grass-slider{
-      0%{
-        left: 2%;
-      }
-      100%{
-        left: var(--grass);
-      }
-    }
+    // @keyframes grass-slider{
+    //   0%{
+    //     left: 2%;
+    //   }
+    //   100%{
+    //     left: var(--grass);
+    //   }
+    // }
 
     .mold-indicator{
       top: 0;
-      animation-duration: 3s;
-      animation-name: mold-slider;  
-      animation-fill-mode: forwards;
+      // animation-duration: 3s;
+      // animation-name: mold-slider;  
+      // animation-fill-mode: forwards;
     }
 
-    @keyframes mold-slider{
-      0%{
-        left: 2%;
-      }
-      100%{
-        left: var(--mold);
-      }
-    }
+    // @keyframes mold-slider{
+    //   0%{
+    //     left: 2%;
+    //   }
+    //   100%{
+    //     left: var(--mold);
+    //   }
+    // }
   }
 
 }

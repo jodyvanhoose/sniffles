@@ -3,6 +3,7 @@ import { FaVirus, FaTree } from 'react-icons/fa';
 import { GiFireFlower, GiHighGrass } from "react-icons/gi";
 
 
+
 function Main() {
 
   // setting input value
@@ -22,81 +23,95 @@ const [searchVal, setSearchVal] = useState('')
   const [moldValue, setMoldValue] = useState(null)
 
 
+  const [ treeColor, setTreeColor ] = useState('blue')
+  const [ grassColor, setGrassColor ] = useState('blue')
+  const [ weedColor, setWeedColor ] = useState('blue')
+  const [ moldColor, setMoldColor ] = useState('blue')
+
+  const [ treePosition, setTreePosition ] = useState('2%')
+  const [ grassPosition, setGrassPosition ] = useState('2%')
+  const [ weedPosition, setWeedPosition ] = useState('2%')
+  const [ moldPosition, setMoldPosition ] = useState('2%')
+
 
   // setting pollen value color
  
-  const pollenCatTextColor = (category, catText) =>{
-    
-    switch(category){
-      case 'Good':
-        catText.style.color = 'darkgreen'
-        break;
-      case 'Low':
-        catText.style.color = 'green'
-        break;
-      case 'Moderate':
-        catText.style.color = 'yellow'
-        break;
-      case 'High':
-        catText.style.color = 'orangered'
-        break;
-      case 'Unhealthy':
-        catText.style.color = 'red'
-        break;
-      case 'Hazardous':
-        catText.style.color = 'darkred'
-        break;
-      default:
-        break;
-    }
-  }
+  // const pollenCatTextColor = (category) =>{
+    // let color;
+    // switch(data.DailyForecasts[0].AirAndPollen[4].Category){
+    //   case 'Good':
+    //     setTreeColor('darkgreen')
+    //     break;
+    //   case 'Low':
+    //     setTreeColor('green')
+    //     break;
+    //   case 'Moderate':
+    //     setTreeColor('yellow')
+    //     break;
+    //   case 'High':
+    //     setTreeColor('orangered')
+    //     break;
+    //   case 'Unhealthy':
+    //     setTreeColor('red')
+    //     break;
+    //   case 'Hazardous':
+    //     setTreeColor('darkred')
+    //     break;
+    //   default:
+    //     break;
+    // }
+
+  // }
+
+
 
   // setting animation indicator
-  let r = document.querySelector(':root')
+  // let r = document.querySelector(':root')
 
-  const pollenAnimateIndicator = (category, pollenVar) =>{
+
+  // const pollenAnimateIndicator = (category, pollenVar) =>{
     
-    switch(category){
-      case 'Good':
-        r.style.setProperty(pollenVar, '5%') 
-        break;
-      case 'Low':
-        r.style.setProperty(pollenVar, '25%') 
-        break;
-      case 'Moderate':
-        r.style.setProperty(pollenVar, '50%') 
-        break;
-      case 'High':
-        r.style.setProperty(pollenVar, '70%') 
-        break;
-      case 'Unhealthy':
-        r.style.setProperty(pollenVar, '85%') 
-        break;
-      case 'Hazardous':
-        r.style.setProperty(pollenVar, '95%') 
-        break;
-      default:
-        break;
-    }
-  }
+  //   switch(category){
+  //     case 'Good':
+  //       r.style.setProperty(pollenVar, '5%') 
+  //       break;
+  //     case 'Low':
+  //       r.style.setProperty(pollenVar, '25%') 
+  //       break;
+  //     case 'Moderate':
+  //       r.style.setProperty(pollenVar, '50%') 
+  //       break;
+  //     case 'High':
+  //       r.style.setProperty(pollenVar, '70%') 
+  //       break;
+  //     case 'Unhealthy':
+  //       r.style.setProperty(pollenVar, '85%') 
+  //       break;
+  //     case 'Hazardous':
+  //       r.style.setProperty(pollenVar, '95%') 
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // }
 
   
  
   // targeting pollen text by class name
-  let treeCatText = document.querySelector('.tree-box')
-  let weedCatText = document.querySelector('.weed-box')
-  let grassCatText = document.querySelector('.grass-box')
-  let moldCatText = document.querySelector('.mold-box')
+  // let treeCatText = document.querySelector('.tree-box')
+  // let weedCatText = document.querySelector('.weed-box')
+  // let grassCatText = document.querySelector('.grass-box')
+  // let moldCatText = document.querySelector('.mold-box')
 
-  pollenCatTextColor(treeCategory, treeCatText)
-  pollenCatTextColor(grassCategory, grassCatText)
-  pollenCatTextColor(weedCategory, weedCatText)
-  pollenCatTextColor(moldCategory, moldCatText)
+  // pollenCatTextColor(treeCategory)
+  // pollenCatTextColor(grassCategory, grassCatText)
+  // pollenCatTextColor(weedCategory, weedCatText)
+  // pollenCatTextColor(moldCategory, moldCatText)
   
-  pollenAnimateIndicator(treeCategory, '--tree')
-  pollenAnimateIndicator(grassCategory, '--grass')
-  pollenAnimateIndicator(weedCategory, '--weed')
-  pollenAnimateIndicator(moldCategory, '--mold')
+  // pollenAnimateIndicator(treeCategory, '--tree')
+  // pollenAnimateIndicator(grassCategory, '--grass')
+  // pollenAnimateIndicator(weedCategory, '--weed')
+  // pollenAnimateIndicator(moldCategory, '--mold')
 
  
   // setting location display text
@@ -173,12 +188,81 @@ try {
   setWeedValue(data.DailyForecasts[0].AirAndPollen[3].Value)
   setMoldValue(data.DailyForecasts[0].AirAndPollen[2].Value)
 
+  const changeTextColor = (category, catText) => {
+    switch(category){
+      case 'Good':
+        catText('darkgreen')
+        break;
+      case 'Low':
+        catText('green')
+        break;
+      case 'Moderate':
+        catText('yellow')
+        break;
+      case 'High':
+        catText('orangered')
+        break;
+      case 'Unhealthy':
+        catText('red')
+        break;
+      case 'Hazardous':
+        catText('darkred')
+        break;
+      default:
+        break;
+    }
+  }
+
+  changeTextColor(data.DailyForecasts[0].AirAndPollen[4].Category, setTreeColor)
+  changeTextColor(data.DailyForecasts[0].AirAndPollen[1].Category, setGrassColor)
+  changeTextColor(data.DailyForecasts[0].AirAndPollen[3].Category, setWeedColor)
+  changeTextColor(data.DailyForecasts[0].AirAndPollen[2].Category, setMoldColor)
+
+  const pollenAnimateIndicator = (category, catPosition) =>{
+    
+    switch(category){
+      case 'Good':
+        catPosition('5%') 
+        break;
+      case 'Low':
+        catPosition('25%')
+        break;
+      case 'Moderate':
+        catPosition('50%') 
+        break;
+      case 'High':
+        catPosition('70%')  
+        break;
+      case 'Unhealthy':
+        catPosition('85%')  
+        break;
+      case 'Hazardous':
+        catPosition('90%')  
+        break;
+      default:
+        break;
+    }
+  }
+
+  
+
+  pollenAnimateIndicator(data.DailyForecasts[0].AirAndPollen[4].Category, setTreePosition)
+  pollenAnimateIndicator(data.DailyForecasts[0].AirAndPollen[1].Category, setGrassPosition)
+  pollenAnimateIndicator(data.DailyForecasts[0].AirAndPollen[3].Category, setWeedPosition)
+  pollenAnimateIndicator(data.DailyForecasts[0].AirAndPollen[2].Category, setMoldPosition)
+  console.log(treePosition)
+  
+  
+
 } catch (error) {
   console.log(error)
   
 }
   
 }
+
+
+
 
 
   return(
@@ -208,11 +292,11 @@ try {
             <h1 className='pollen_value_text'>{treeValue}</h1>
             <p>pp/m<span>3</span></p>
           </div>
-          <h1 id="tree-box" className="tree-box">{treeCategory}</h1>
+          <h1 id="tree-box" className="tree-box" style={{ color: treeColor }}>{treeCategory}</h1>
           <div className="color-box">
             <div className="color"></div>
-            <div className="indicator tree-indicator"></div>
-          </div> 
+            <div className="indicator tree-indicator" style={{left: treePosition}}></div>
+          </div>
         </div>
       
 
@@ -224,10 +308,10 @@ try {
             <h1 className='pollen_value_text'>{weedValue}</h1>
             <p>pp/m<span>3</span></p>
           </div>
-          <h1 id="weed-box" className="weed-box">{weedCategory}</h1>
+          <h1 id="weed-box" className="weed-box" style={{ color: weedColor }}>{weedCategory}</h1>
           <div className="color-box">
             <div className="color"></div>
-            <div className="indicator weed-indicator"></div>
+            <div className="indicator weed-indicator" style={{left: weedPosition}}></div>
           </div> 
         </div>
         </div>
@@ -245,10 +329,10 @@ try {
             <p>pp/m<span>3</span></p>
           </div>
           
-          <h1 id="grass-box" className="grass-box">{grassCategory}</h1>
+          <h1 id="grass-box" className="grass-box" style={{ color: grassColor }}>{grassCategory}</h1>
           <div className="color-box">
             <div className="color"></div>
-            <div className="indicator grass-indicator"></div>
+            <div className="indicator grass-indicator" style={{left: grassPosition}}></div>
           </div> 
         </div>
 
@@ -261,10 +345,10 @@ try {
             <h1 className='pollen_value_text'>{moldValue}</h1>
             <p>pp/m<span>3</span></p>
           </div>
-          <h1 id="mold-box" className="mold-box">{moldCategory}</h1>
+          <h1 id="mold-box" className="mold-box" style={{ color: moldColor }}>{moldCategory}</h1>
           <div className="color-box">
             <div className="color"></div>
-            <div className="indicator mold-indicator"></div>
+            <div className="indicator mold-indicator" style={{left: moldPosition}}></div>
           </div> 
         </div>
 
