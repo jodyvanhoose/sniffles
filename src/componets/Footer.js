@@ -6,15 +6,19 @@ function Footer() {
   return(
     <footer>
       <div className="footer-container">
-        {/* <a href="#top">Return to top</a> */}
+
+        {/* accuweather logo */}
       <img className='accuweather-logo' src={accuWeatherLogoDark} alt="Accuweather logo" />
       
+      {/* react logo */}
       <div className='react-text'>
         
         <p>Created with React</p>
         <span><img src={logo} className="App-logo" alt="React logo" /></span>
         
       </div>
+
+      {/* social media icons */}
       <div className='social-icons'>
         <a href="https://github.com/jodyvanhoose" target="blank"><FaGithubSquare /></a>
         <a href="https://www.linkedin.com/in/jody-vanhoose/" target="blank"><FaLinkedin /></a>
@@ -22,8 +26,6 @@ function Footer() {
       
       </div>
 
-      
-      
     </footer>
   )
 }

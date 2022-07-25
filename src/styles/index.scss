@@ -7,13 +7,6 @@
   box-sizing: border-box;
 }
 
-// setting variables to change animation indicator
-:root {
-  --tree: 5%;
-  --grass: 5%;
-  --weed: 5%;
-  --mold: 5%;
-}
 
 *{
   scroll-behavior: smooth;
@@ -46,10 +39,6 @@ header{
   margin-top: 2rem;
   align-items: center;
 
-  
-
- 
-
   nav{
     display: flex;
     justify-content: space-between;
@@ -57,7 +46,6 @@ header{
     color: #fff;
     
     h1{
-      // border-bottom: 1px solid $primaryColor;
       letter-spacing: 2px;
       padding-left: .5em;
       margin-top: .3em;
@@ -105,7 +93,6 @@ main{
 
     // only displays when input is in focus
     .clear-btn{
-      // display: none;
       padding: .4em;
       font-weight: 200;
       color: $primaryColor;
@@ -129,9 +116,9 @@ main{
   display: flex;
   justify-content: center;
   align-items: center;
-  // flex-direction: column;
   margin: 0;
 
+  // pollen group sections
   .tree-weed-wrap, .grass-mold-wrap{
     display: flex;
     flex-direction: row;
@@ -184,32 +171,6 @@ main{
   }
   
 
-    // pollen category type display
-    // .tree-box{
-    //   // color: green;
-    //   // text-shadow: 0 0 4px green;
-    //   margin: 0;
-      
-    // }
-  
-    // .weed-box{
-    //   // color: green;
-    //   // text-shadow: 0 0 4px green;
-    //   margin: 0;
-    // }
-  
-    // .grass-box{
-    //   // color: green;
-    //   // text-shadow: 0 0 4px green;
-    //   margin: 0;
-    // }
-  
-    // .mold-box{
-    //   color: red;
-    //   // text-shadow: 0 0 4px green;
-    //   margin: 0;
-    // }
-  
 
   // color graphic display
   .color-box{
@@ -223,7 +184,6 @@ main{
       left: 10px;
       height: 90%;
       width: 93%;
-      // max-width: 250px;
       background: #00ff00;
       background: linear-gradient(90deg,#00ff00 0%, #ff0000 90%);
       background: -webkit-linear-gradient(90deg,#00ff00 0%, #ff0000 90%);
@@ -241,70 +201,11 @@ main{
       background-color: #fff;
     }
 
-    .tree-indicator{
+    .tree-indicator, .weed-indicator, .grass-indicator, .mold-indicator{
       top: 0;
-      // left: 2%;
-      // animation-duration: 3s;
-      // animation-name: tree-slider;  
-      // animation-fill-mode: forwards;
+      left: 2%
     }
 
-    // @keyframes tree-slider{
-    //   0%{
-    //     left: 2%;
-    //   }
-    //   100%{
-    //     left: 2%;
-    //   }
-    // }
-    
-    .weed-indicator{
-      top: 0;
-      // animation-duration: 3s;
-      // animation-name: weed-slider;  
-      // animation-fill-mode: forwards;
-    }
-
-    // @keyframes weed-slider{
-    //   0%{
-    //     left: 2%;
-    //   }
-    //   100%{
-    //     // left: weedPosition;
-    //   }
-    // }
-
-    .grass-indicator{
-      top: 0;
-      // animation-duration: 3s;
-      // animation-name: grass-slider;  
-      // animation-fill-mode: forwards;
-    }
-
-    // @keyframes grass-slider{
-    //   0%{
-    //     left: 2%;
-    //   }
-    //   100%{
-    //     left: var(--grass);
-    //   }
-    // }
-
-    .mold-indicator{
-      top: 0;
-      // animation-duration: 3s;
-      // animation-name: mold-slider;  
-      // animation-fill-mode: forwards;
-    }
-
-    // @keyframes mold-slider{
-    //   0%{
-    //     left: 2%;
-    //   }
-    //   100%{
-    //     left: var(--mold);
-    //   }
-    // }
   }
 
 }
@@ -331,7 +232,6 @@ footer{
       align-items: center;
       justify-content: center;
       padding-top: .3em;
-      // padding-bottom: 1.5rem;
 
       span{
         padding-bottom: 1em;
@@ -389,16 +289,15 @@ footer{
     }
   }
 
-  
-  
 }
 
 @media (max-width: 800px){
- 
-
   .search-bar{
     padding: 0;
-    color: yellow
+    
+    input{
+      width: 75% !important;
+    }
   }
   
   .display-wrap{
@@ -406,10 +305,7 @@ footer{
     margin-left: 2rem;
     margin-right: 3rem;
 
-    
-
     .pollen-display{
-      // width: 94% !important;
       min-width: 250px !important;
       
     }
@@ -447,4 +343,3 @@ footer{
     padding: 0%;
   }
 }
-

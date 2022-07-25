@@ -9,7 +9,9 @@ function Nav() {
   return(
     <header id="top">
       <nav>
+        {/* logo */}
       <h1>Sniffles </h1>
+        {/* date display */}
         <h2>{date}</h2>
       </nav>
     </header>
