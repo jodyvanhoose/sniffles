@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FaVirus, FaTree } from 'react-icons/fa';
 import { GiFireFlower, GiHighGrass } from "react-icons/gi";
 import Display from './Display';
@@ -34,7 +34,10 @@ function Main() {
 
  
   // setting location display text
-  const [location, setLocation] = useState(`Check your location's pollen count`)
+  const [location, setLocation] = useState(`Tampa, FL`)
+
+  // setting city code for api call
+  const [cityCode, setCityCode] = useState(347937)
 
 
   // getting api info for location and pollen count
@@ -53,11 +56,13 @@ function Main() {
 
 
     // cityCode is needed for pollen api
-    let cityCode = data[0].Key
+    setCityCode(data[0].Key)
+    console.log(data[0].Key)
 
 
     // setting location text from location api
     setLocation(data[0].EnglishName + ', ' + data[0].AdministrativeArea.ID)
+    console.log(data[0].EnglishName + ', ' + data[0].AdministrativeArea.ID)
 
 
     // clears input field 
@@ -65,7 +70,7 @@ function Main() {
 
 
     // calling pollen api
-    await getPollenCount(cityCode, apiKey)
+    // await getPollenCount()
     } 
   
     catch (error) {
@@ -77,103 +82,108 @@ function Main() {
   }
 
   // get pollen count from api
-  const getPollenCount = async (c, key) => {
-
-    try {
-      const apiKey = key
-      const basePollenURL = 'http://dataservice.accuweather.com/forecasts/v1/daily/1day/'
-      let city = c
-
-
-      const response = await fetch(`${basePollenURL}${city}?apikey=${apiKey}&details=true`)
-      let data = await response.json()
-
-
-      // setting pollen categorys and values to display
-      setTreeCategory(data.DailyForecasts[0].AirAndPollen[4].Category)
-      setGrassCategory(data.DailyForecasts[0].AirAndPollen[1].Category)
-      setWeedCategory(data.DailyForecasts[0].AirAndPollen[3].Category)
-      setMoldCategory(data.DailyForecasts[0].AirAndPollen[2].Category)
-      setTreeValue(data.DailyForecasts[0].AirAndPollen[4].Value)
-      setGrassValue(data.DailyForecasts[0].AirAndPollen[1].Value)
-      setWeedValue(data.DailyForecasts[0].AirAndPollen[3].Value)
-      setMoldValue(data.DailyForecasts[0].AirAndPollen[2].Value)
-
-
-      // switch statement to determine pollen category text color by category type
-      const changeTextColor = (category, catText) => {
-        switch(category){
-          case 'Good':
-            catText('darkgreen')
-            break;
-          case 'Low':
-            catText('green')
-            break;
-          case 'Moderate':
-            catText('yellow')
-            break;
-          case 'High':
-            catText('orangered')
-            break;
-          case 'Unhealthy':
-            catText('red')
-            break;
-          case 'Hazardous':
-            catText('darkred')
-            break;
-          default:
-            break;
-        }
-      }
-
-      // updating category text color
-      changeTextColor(data.DailyForecasts[0].AirAndPollen[4].Category, setTreeColor)
-      changeTextColor(data.DailyForecasts[0].AirAndPollen[1].Category, setGrassColor)
-      changeTextColor(data.DailyForecasts[0].AirAndPollen[3].Category, setWeedColor)
-      changeTextColor(data.DailyForecasts[0].AirAndPollen[2].Category, setMoldColor)
-
-      // switch statement to determine pollen indicator position on color graph by category type
-      const pollenAnimateIndicator = (category, catPosition) =>{
-      
-        switch(category){
-          case 'Good':
-            catPosition('5%') 
-            break;
-          case 'Low':
-            catPosition('25%')
-            break;
-          case 'Moderate':
-            catPosition('50%') 
-            break;
-          case 'High':
-            catPosition('70%')  
-            break;
-          case 'Unhealthy':
-            catPosition('85%')  
-            break;
-          case 'Hazardous':
-            catPosition('90%')  
-            break;
-          default:
-            break;
-        }
-      }
-
+  useEffect(() =>{
+    async function fetchPollenData(){
+      try {
+        const apiKey = process.env.REACT_APP_API_KEY
+        const basePollenURL = 'http://dataservice.accuweather.com/forecasts/v1/daily/1day/'
   
-      // updating pollen indicator position
-      pollenAnimateIndicator(data.DailyForecasts[0].AirAndPollen[4].Category, setTreePosition)
-      pollenAnimateIndicator(data.DailyForecasts[0].AirAndPollen[1].Category, setGrassPosition)
-      pollenAnimateIndicator(data.DailyForecasts[0].AirAndPollen[3].Category, setWeedPosition)
-      pollenAnimateIndicator(data.DailyForecasts[0].AirAndPollen[2].Category, setMoldPosition)
+  
+        const response = await fetch(`${basePollenURL}${cityCode}?apikey=${apiKey}&details=true`)
+        let data = await response.json()
+  
+  
+        // setting pollen categorys and values to display
+        setTreeCategory(data.DailyForecasts[0].AirAndPollen[4].Category)
+        setGrassCategory(data.DailyForecasts[0].AirAndPollen[1].Category)
+        setWeedCategory(data.DailyForecasts[0].AirAndPollen[3].Category)
+        setMoldCategory(data.DailyForecasts[0].AirAndPollen[2].Category)
+        setTreeValue(data.DailyForecasts[0].AirAndPollen[4].Value)
+        setGrassValue(data.DailyForecasts[0].AirAndPollen[1].Value)
+        setWeedValue(data.DailyForecasts[0].AirAndPollen[3].Value)
+        setMoldValue(data.DailyForecasts[0].AirAndPollen[2].Value)
+  
+  
+        // switch statement to determine pollen category text color by category type
+        const changeTextColor = (category, catText) => {
+          switch(category){
+            case 'Good':
+              catText('darkgreen')
+              break;
+            case 'Low':
+              catText('green')
+              break;
+            case 'Moderate':
+              catText('yellow')
+              break;
+            case 'High':
+              catText('orangered')
+              break;
+            case 'Unhealthy':
+              catText('red')
+              break;
+            case 'Hazardous':
+              catText('darkred')
+              break;
+            default:
+              break;
+          }
+        }
+  
+        // updating category text color
+        changeTextColor(data.DailyForecasts[0].AirAndPollen[4].Category, setTreeColor)
+        changeTextColor(data.DailyForecasts[0].AirAndPollen[1].Category, setGrassColor)
+        changeTextColor(data.DailyForecasts[0].AirAndPollen[3].Category, setWeedColor)
+        changeTextColor(data.DailyForecasts[0].AirAndPollen[2].Category, setMoldColor)
+  
+        // switch statement to determine pollen indicator position on color graph by category type
+        const pollenAnimateIndicator = (category, catPosition) =>{
+        
+          switch(category){
+            case 'Good':
+              catPosition('5%') 
+              break;
+            case 'Low':
+              catPosition('25%')
+              break;
+            case 'Moderate':
+              catPosition('50%') 
+              break;
+            case 'High':
+              catPosition('70%')  
+              break;
+            case 'Unhealthy':
+              catPosition('85%')  
+              break;
+            case 'Hazardous':
+              catPosition('90%')  
+              break;
+            default:
+              break;
+          }
+        }
+  
     
-
-      } catch (error) {
-        console.log(error)
+        // updating pollen indicator position
+        pollenAnimateIndicator(data.DailyForecasts[0].AirAndPollen[4].Category, setTreePosition)
+        pollenAnimateIndicator(data.DailyForecasts[0].AirAndPollen[1].Category, setGrassPosition)
+        pollenAnimateIndicator(data.DailyForecasts[0].AirAndPollen[3].Category, setWeedPosition)
+        pollenAnimateIndicator(data.DailyForecasts[0].AirAndPollen[2].Category, setMoldPosition)
+      
   
+        } catch (error) {
+          console.log(error)
+    
+      }
+    
     }
-  
-  }
+    fetchPollenData()
+    
+  }, [cityCode])
 
+
+    
+  
 
   return(
     <main>
