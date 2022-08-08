@@ -49,7 +49,7 @@ function Main() {
     try {
     // get location api
     const apiKey = process.env.REACT_APP_API_KEY
-    const baseLocationURL = 'http://dataservice.accuweather.com/locations/v1/cities/search'
+    const baseLocationURL = 'https://dataservice.accuweather.com/locations/v1/cities/search'
 
     const response = await fetch(`${baseLocationURL}?apikey=${apiKey}&q=${searchVal}&offset=1`)
     let data = await response.json()
@@ -86,7 +86,7 @@ function Main() {
     async function fetchPollenData(){
       try {
         const apiKey = process.env.REACT_APP_API_KEY
-        const basePollenURL = 'http://dataservice.accuweather.com/forecasts/v1/daily/1day/'
+        const basePollenURL = 'https://dataservice.accuweather.com/forecasts/v1/daily/1day/'
   
   
         const response = await fetch(`${basePollenURL}${cityCode}?apikey=${apiKey}&details=true`)
