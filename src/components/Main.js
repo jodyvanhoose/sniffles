@@ -34,10 +34,10 @@ function Main() {
 
  
   // setting location display text
-  const [location, setLocation] = useState(`Tampa, FL`)
+  const [location, setLocation] = useState(`Select a Location`)
 
   // setting city code for api call
-  const [cityCode, setCityCode] = useState(347937)
+  const [cityCode, setCityCode] = useState(null)
 
 
   // getting api info for location and pollen count
