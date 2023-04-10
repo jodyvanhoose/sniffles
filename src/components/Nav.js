@@ -1,5 +1,4 @@
 
-
 function Nav() {
   const currentDate = new Date();
   const date = `${currentDate.getMonth() + 1}/${currentDate.getDate()}/${currentDate.getFullYear()}`
